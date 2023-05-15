@@ -1,8 +1,8 @@
-import { createUser, findUser } from '../../lib/user'
+import { createUser, findUser } from '../../../lib/user'
 import passport from 'passport'
 import nextConnect from 'next-connect'
-import { setLoginSession } from '../../lib/auth'
-import { localStrategy } from '../../lib/password-local'
+import { setLoginSession } from '../../../lib/auth'
+import { localStrategy } from '../../../lib/password-local'
 
 
 

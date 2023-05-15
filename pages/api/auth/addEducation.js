@@ -1,5 +1,5 @@
-import { addEducation } from "../../lib/user";
-import { removeTokenCookie } from '../../lib/auth-cookies'
+import { addEducation } from "../../../lib/user";
+import { removeTokenCookie } from '../../../lib/auth-cookies'
 
 
 

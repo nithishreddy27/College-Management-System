@@ -59,7 +59,7 @@ const Form = ({ isLogin, errorMessage, onSubmit }) => (
       delay:0.2
     }}></motion.input>
     </div>
-    <p>Already a user? <Link href="/login" className="hover:underline">Log in</Link></p>
+    <p>Already a user? <Link href="/auth/login" className="hover:underline">Log in</Link></p>
     <p id="mess"></p>
     <div className='text-center mt-5'>
       <motion.input type="submit" value="Sign up"  className='bg-orange-600 font-semibold cursor-pointer block w-[100%] text-white h-10 rounded-md hover:bg-orange-700'

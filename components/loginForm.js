@@ -42,7 +42,7 @@ const Form = ({ isLogin, errorMessage, onSubmit }) => (
 
 
     <div className="flex gap-5 sm:gap-16">
-    <p> <Link href="/accounts" className="hover:underline">Are you a new user?</Link></p>
+    <p> <Link href="/auth/register/accounts" className="hover:underline">Are you a new user?</Link></p>
     <p><Link href="/forgot" className="text-orange-600 hover:text-orange-500">Forgot password?</Link></p>
     </div>
     <p id="mess"></p>

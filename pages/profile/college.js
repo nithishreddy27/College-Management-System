@@ -3,16 +3,14 @@ import Navbar from '../../components/Navbar';
 import {useUser} from "../../lib/hooks"
 import Link from "next/link"
 import { useRouter } from 'next/router';
+import { getLoginSession } from '../../lib/auth';
+import { findUser } from '../../lib/user';
 
-export default function College() {
-
-  const user = useUser()
+export default function College({userDetails}) {
+  const user = JSON.parse(userDetails)
+  console.log(userDetails)
   const [position, setPosition] = useState("profile");
   const router = useRouter();
-
-  function runMe(){
-    router.push("/register/addCollegeDetails")
-  }
   return (
     // <div>student  {JSON.stringify(user)}</div>
     <div className="h-screen w-screen">
@@ -113,15 +111,19 @@ export default function College() {
       )}
 
 
-      {user && !user.profile.firstName &&(
-        <>
-          {
-            runMe()
-          }
-        </>
-      ) }
-      
+     
     </div>
   </div>
   )
 }
+
+export const getServerSideProps = async ({ req, res }) => {
+  const session = await getLoginSession(req);
+  const user = (session?._doc && (await findUser(session._doc))) ?? null;
+  
+  console.log("req",user)
+  const userDetails = JSON.stringify(user)
+  return {
+    props: {userDetails:userDetails},
+  };
+};

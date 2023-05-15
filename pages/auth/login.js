@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import Router from 'next/router'
-import { useUser } from '../lib/hooks'
-import Form from '../components/loginForm'
+import { useUser } from '../../lib/hooks'
+import Form from '../../components/loginForm'
 import Image from 'next/image'
+import { getLoginSession } from '../../lib/auth'
+import { findUser } from '../../lib/user'
 
 const Login = () => {
   useUser({ redirectTo: '/profile', redirectIfFound: true })
@@ -20,7 +22,7 @@ const Login = () => {
     }
     console.log(body)
     try {
-      const res = await fetch('/api/login', {
+      const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
@@ -52,5 +54,25 @@ const Login = () => {
     </>
   )
 }
+
+
+export const getServerSideProps = async ({ req, res }) => {
+  const session = await getLoginSession(req);
+  const user = (session?._doc && (await findUser(session._doc))) ?? null;
+  
+  console.log("req",user)
+  // if (user) {
+  //   // console.log("first...", user.email, user.hash, user.salt);
+  //   return {
+  //     redirect: {
+  //       destination: `/dashboard/${user?.category}`,
+  //       permanent: false,
+  //     },
+  //   };
+  // }
+  return {
+    props: {},
+  };
+};
 
 export default Login

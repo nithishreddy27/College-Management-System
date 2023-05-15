@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useUser } from "../../lib/hooks";
+// import { useUser } from "../../lib/hooks";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
 import Image from "next/image";
+import { useUser } from "../../../lib/hooks";
 
 export default function AddDetails() {
   const user = useUser();
@@ -17,26 +18,6 @@ export default function AddDetails() {
   const [collegeId, setcollegeId] = useState("false");
   const [college, setCollege] = useState();
 
-  async function checkCollege() {
-    // console.log("inside college");
-    const clgid = document.getElementById("clgid").value;
-    console.log(clgid);
-    if (clgid == "") {
-      setmess("Invalid Paraphrase");
-    } else {
-      const res = await fetch(`./api/checkCollege/${clgid}`);
-      const data = await res.json();
-      if (res.status === 200) {
-        setmess("invalid paraphrase");
-        setcollegeId("false");
-        setCollege("");
-      } else {
-        setmess("");
-        setCollege(data.done.collegeName);
-        setcollegeId("true");
-      }
-    }
-  }
 
   return (
     <div>
@@ -52,7 +33,7 @@ export default function AddDetails() {
           <div className="bg-white pt-1 pb-8 shadow-xl rounded-xl px-10 ">
             <form
               method="POST"
-              action="../api/addDetails"
+              action="../../api/auth/addDetails"
               className=" mx-auto my-10"
             >
               <div className="flex justify-between">
@@ -73,7 +54,7 @@ export default function AddDetails() {
                 </div>
                 <div>
                   <Link
-                    href="/api/logout"
+                    href="/api/auth/logout"
                     className="text-orange-600 text-sm mx-2 font-semibold hover:text-orange-900 hover:underline"
                   >
                     Logout

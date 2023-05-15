@@ -6,19 +6,6 @@ const userSchema = new mongoose.Schema(
     username: { type: String, trim: true, unique: true },
     hash: { type: String },
     salt: { type: String },
-    placed: {
-      type: Boolean,
-      default: false,
-    },
-    detailsAvailable: {
-      type: Boolean,
-    },
-    academicsAvailable: {
-      type: Boolean,
-    },
-    paraphrase: {
-      type: String,
-    },
     profile: {
       firstName: {
         type: String,
@@ -68,26 +55,15 @@ const userSchema = new mongoose.Schema(
     approved: {
       type: Boolean,
     },
-    category: {
-      type: String,
-    },
     rollNumber: {
       value: {
         type: String,
         trim: true,
         uppercase: true,
       },
-      verified: {
-        type: Boolean,
-        default: false,
-      },
-      frozen: {
-        type: Boolean,
-        default: false,
-      },
     },
-    notificationMethod: {
-      type: String
+    position:{
+      type:String,
     },
     college: {
       name: {
@@ -105,10 +81,6 @@ const userSchema = new mongoose.Schema(
       specialisation: {
         type: String
       },
-      
-      // passphrase: {
-      //   type: String,
-      // },
       paraphrase: {
         type: String,
       },
@@ -116,216 +88,28 @@ const userSchema = new mongoose.Schema(
         type: String,
       },
     },
-    principal:{
-      // type:String
-      phone:{
-        type:String
+    department:{
+      name: {
+        type: String,
       },
-      email:{
-        type:String
-      }
-      
-    },
-    placement:{
-      designation:{
-        type:String
+      code: {
+        type: String,
       },
-      phone:{
-        type:String
-      },
-      email:{
-        type:String
-      }
     },
-    resume:{
-      personal:{
-        firstName:{
-            type:String
-        },
-        lastName:{
-            type:String
-        },
-        email:{
-            type:String
-        },
-        role:{
-            type:String
-        },
-        image:{
-            type:String
-        },
-        dob:{
-            type:String
-        },
-        phone:{
-            type:String
-        },
-        objective:{
-            type:String
-        }
+    lab:{
+      name:{type:String},
+      number:{type:Number}
     },
-    social:[{
-        network:{
-            type:String,
-        },
-        username:{
-            type:String
-        },
-        url:{
-            type:String
-        },
-        enabled:{
-            type:String
-        },
+    facultySubjects:[{
+      name:{type:String},
+      class:{type:String},
     }],
-    work:[{
-        company:{
-            type:String
-        },
-        from:{
-            type:String
-        },
-        to:{
-            type:String
-        },
-        designation:{
-            type:String
-        },
-        website:{
-            type:String
-        },
-        summary:{
-            data:{
-                type:String
-            },
-            enable:{
-                type:Boolean
-            }
-        },
-
-    }],
-    education:[{
-        institution:{
-            type:String
-        },
-        fieldOfStudy:{
-            type:String
-        },
-        typeOfDegree:{
-            type:String
-        },
-        startDate:{
-            type:String
-        },
-        endDate:{
-            type:String
-        },
-        gpa:{
-            type:String
-        },
-        summary:{
-            data:{
-                type:String
-            },
-            enable:{
-                type:Boolean
-            }
-        }
-    }],
-    projects:[{
-        name:{
-            type:String
-        },
-        from:{
-            type:String
-        },
-        to:{
-            type:String
-        },
-
-        website:{
-            type:String
-        },
-        summary:{
-            data:{
-                type:String
-            },
-            enable:{
-                type:Boolean
-            }
-        }
-    }],
-    awards:[{
-        name:{
-            type:String
-        },
-        awarder:{
-            type:String
-        },
-        todate:{
-            type:String
-        },
-        summary:{
-            data:{
-                type:String
-            },
-            enable:{
-                type:Boolean
-            }
-        }
-    }],
-    certifications: [{
-        title:{
-            type:String
-        },
-        date:{
-            type:String
-        },
-        issuer:{
-            type:String
-        },
-        summary:{
-            data:{
-                type:String
-            },
-            enable:{
-                type:Boolean
-            }
-        }
-    }],
-    skills:[{
-        name:{
-            type:String
-        },
-        level:{
-            type:String
-        },
-        enabled:{
-            type:Boolean
-        },
-    }],
-    languages:[{
-        name:{
-            type:String
-        },
-        level:{
-            type:String
-        },
-        enabled:{
-            type:Boolean
-        },
-    }],
-    hobbies:[{
-        name:{
-            type:String
-        },
-        enabled:{
-            type:Boolean
-        },
+    studentSubjects:[{
+      name:{type:String},
+      facultyName:{type:String}
     }]
-    }
   },
   { timestamps: true }
 );
 
-export default mongoose.models.students || mongoose.model("students", userSchema);
+export default mongoose.models.users || mongoose.model("users", userSchema);

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image'
 import { FiMenu } from 'react-icons/fi'
 import React, { useState } from "react";
-import Navbar from '../components/Navbar';
+import Navbar from '../../../components/Navbar';
 
 const Accounts = () => {
     const [open, setOpen] = useState(false);
@@ -49,7 +49,7 @@ const Accounts = () => {
                 <button className='bg-orange-700 px-3 py-2 rounded-md text-white'>Login</button>
                 </div>
                 <div className='text-center'>Don't have an account?</div>
-                <Link className='text-center text-orange-500 hover:underline hover:text-orange-800 mb-3' href={{pathname:"/register",query:{type:"college"}}}>Sign up.</Link>
+                <Link className='text-center text-orange-500 hover:underline hover:text-orange-800 mb-3' href={{pathname:"/auth/register",query:{type:"college"}}}>Sign up.</Link>
             </div>
             {/* <div className='border shadow-lg rounded-lg m-5 hover:m-[18px]'>
                 <h1 className='font-semibold text-gray-700 text-3xl text-center pt-5'>For <span className='font-bold text-orange-600 text-3xl'>Corporates</span></h1>
@@ -64,7 +64,7 @@ const Accounts = () => {
             </div> */}
         </div>
         </div>
-    </div>
+    </div>  
     
   )
 }

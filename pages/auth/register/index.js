@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import { useUser } from '../../lib/hooks'
-import Form from '../../components/registerform'
+import { useUser } from '../../../lib/hooks'
+import Form from '../../../components/registerform'
 import Router, { useRouter } from "next/router"
 
 
@@ -20,16 +20,16 @@ export default function Index() {
     const body = {
       username: e.currentTarget.username.value,
       password: e.currentTarget.password.value,
-      notificationMethod:query.type
+      position:"collegeAdmin"
     }
 
     if (body.password !== e.currentTarget.rpassword.value) {
-      setErrorMsg(`The passwords don't match`)
+      setErrorMsg(`The passwords don't match`)  
       return
     }
 
     try {
-      const res = await fetch('/api/signup', {
+      const res = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
@@ -39,7 +39,7 @@ export default function Index() {
             Router.push('/register/addStdDetails')
         }
         if(query.type== "college"){
-            Router.push('/register/addCollegeDetails')
+            Router.push('/auth/register/addCollegeDetails')
         }
         if(query.type== "individual"){
             Router.push('/register/addIndDetails')

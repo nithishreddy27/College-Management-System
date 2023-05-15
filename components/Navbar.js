@@ -8,21 +8,6 @@ const Navbar = () => {
   const user = useUser();
   const router = useRouter();
 
-  function runMe() {
-    // console.log(user.profile.firstName)
-    if (user.notificationMethod == "student") {
-      router.push("/register/addStdDetails");
-    }
-    if (user.notificationMethod == "college") {
-      router.push("/register/addCollegeDetails");
-    }
-    if (user.notificationMethod == "individual") {
-      router.push("/register/addIndDetails");
-    }
-    if (user.notificationMethod == "corporate") {
-      router.push("/register/addStdDetails");
-    }
-  }
   return (
     <div>
       <div className="border-b border-gray-300 py-2 fixed top-[-8px] w-[100%] z-40 bg-slate-50">
@@ -46,41 +31,11 @@ const Navbar = () => {
                   } w-full lg:flex lg:items-center lg:w-auto`}
                 >
                   <ul className="text-base text-gray-600 lg:flex lg:justify-between">
+                   
+                    
                     <li>
                       <Link
-                        href="/discover"
-                        className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
-                      >
-                        Discover
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/post"
-                        className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
-                      >
-                        Post
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href={`/resume`}
-                        className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
-                      >
-                        Notifications
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/profile"
-                        className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
-                      >
-                        Profile
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/api/logout"
+                        href="/api/auth/logout"
                         className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
                       >
                         Logout
@@ -89,7 +44,6 @@ const Navbar = () => {
                   </ul>
                 </nav>
               }
-              {user.profile.firstName == null && <>{runMe()}</>}
             </>
           )}
           {!user && (
@@ -101,7 +55,7 @@ const Navbar = () => {
               <ul className="text-base text-gray-600 lg:flex lg:justify-between">
                 <li>
                   <Link
-                    href="/login"
+                    href="/auth/login"
                     className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
                   >
                     Login
