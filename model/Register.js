@@ -11,10 +11,6 @@ const userSchema = new mongoose.Schema(
         type: String,
         trim: true,
       },
-      middleName: {
-        type: String,
-        trim: true,
-      },
       lastName: {
         type: String,
         trim: true,
@@ -23,34 +19,13 @@ const userSchema = new mongoose.Schema(
         type: String,
         default:
           "http://res.cloudinary.com/dj7nomqfd/image/upload/v1647117869/uploads/bphhxvmlcyyu2pntbikm.png",
-      },
-      dob: {
-        type: Date,
-      },
-      gender: {
-        type: String,
-      },
-      verified: {
-        type: Boolean,
-        default: false,
-      },
-      frozen: {
-        type: Boolean,
-        default: false,
-      },
+      }
     },
     phone: {
       value: {
         type: Number,
       },
-      verified: {
-        type: Boolean,
-        default: false,
-      },
-      frozen: {
-        type: Boolean,
-        default: false,
-      },
+     
     },
     approved: {
       type: Boolean,
@@ -83,10 +58,7 @@ const userSchema = new mongoose.Schema(
       },
       paraphrase: {
         type: String,
-      },
-      website: {
-        type: String,
-      },
+      }
     },
     department:{
       name: {
@@ -104,9 +76,13 @@ const userSchema = new mongoose.Schema(
       name:{type:String},
       class:{type:String},
     }],
+    attendance:{type:Number},
+    totalClasses:{type:Number},
     studentSubjects:[{
       name:{type:String},
-      facultyName:{type:String}
+      facultyName:{type:String},
+      subjectAttendance:{type:Number},
+      totalSubjectClasses:{type:Number}
     }]
   },
   { timestamps: true }

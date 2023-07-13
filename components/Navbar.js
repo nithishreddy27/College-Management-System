@@ -23,62 +23,86 @@ const Navbar = () => {
             onClick={() => setOpen(!open)}
           />
           {user && (
-            <>
-              {
-                <nav
-                  className={`${
-                    open ? "block" : "hidden"
-                  } w-full lg:flex lg:items-center lg:w-auto`}
-                >
-                  <ul className="text-base text-gray-600 lg:flex lg:justify-between">
-                   
-                    
-                    <li>
-                      <Link
-                        href="/api/auth/logout"
-                        className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
-                      >
-                        Logout
-                      </Link>
-                    </li>
-                  </ul>
-                </nav>
-              }
-            </>
+           <div className="navbar fixed top-0 z-50 py-4 px-10 font-serif bg-transparent backdrop-filter backdrop-blur-lg shadow-md w-full">
+           <div className="relative grid grid-cols-2 items-center">
+             <Link className="py-1 ml-5 mr-32 text-4xl " href="#">
+               College Management System
+             </Link>
+             <div className="flex gap-2 mx-10 text-lg align-text-bottom">
+               <Link
+                 className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                 href="#"
+               >
+                 Home
+               </Link>
+               <Link
+                 className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                 href="#"
+               >
+                 Choose
+               </Link>
+               <Link
+                 className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                 href="/attendance"
+               >
+                 Attendance
+               </Link>
+               <Link
+                 className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                 href="/api/auth/logout"
+               >
+                 Logout
+               </Link>
+               <Link
+                 className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                 href="#"
+               >
+                 Pricing
+               </Link>
+             </div>
+           </div>
+         </div>
           )}
           {!user && (
-            <nav
-              className={`${
-                open ? "block" : "hidden"
-              } w-full lg:flex lg:items-center lg:w-auto`}
-            >
-              <ul className="text-base text-gray-600 lg:flex lg:justify-between">
-                <li>
-                  <Link
-                    href="/auth/login"
-                    className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
-                  >
-                    Login
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
-                  >
-                    About us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="lg:pl-8 py-3 block hover:text-orange-700 font-semibold"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </nav>
+            <div className="navbar fixed top-0 z-50 py-4 px-10 font-serif bg-transparent backdrop-filter backdrop-blur-lg shadow-md w-full">
+            <div className="relative grid grid-cols-2 items-center">
+              <Link className="py-1 ml-5 mr-32 text-4xl " href="#">
+                College Management System
+              </Link>
+              <div className="flex gap-2 mx-10 text-lg align-text-bottom">
+                <Link
+                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                  href="#"
+                >
+                  Home
+                </Link>
+                <Link
+                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                  href="#"
+                >
+                  Choose
+                </Link>
+                <Link
+                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                  href="/auth/login"
+                >
+                  Login
+                </Link>
+                <Link
+                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                  href="#"
+                >
+                  Pricing
+                </Link>
+                <Link
+                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                  href="#"
+                >
+                  Contact
+                </Link>
+              </div>
+            </div>
+          </div>
           )}
         </div>
       </div>

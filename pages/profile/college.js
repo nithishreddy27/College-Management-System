@@ -120,7 +120,7 @@ export default function College({userDetails}) {
 export const getServerSideProps = async ({ req, res }) => {
   const session = await getLoginSession(req);
   const user = (session?._doc && (await findUser(session._doc))) ?? null;
-  
+    
   console.log("req",user)
   const userDetails = JSON.stringify(user)
   return {

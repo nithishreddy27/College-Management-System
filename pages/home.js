@@ -9,6 +9,7 @@ import {
 import { FaUserCheck } from "react-icons/fa";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { TfiCommentsSmiley, TfiCrown } from "react-icons/tfi";
+import Navbar from "../components/Navbar"
 
 export default function Home() {
   return (
@@ -22,45 +23,7 @@ export default function Home() {
             alt=""
           />
         </div>
-        <div className="navbar fixed top-0 z-50 py-4 px-10 font-serif bg-transparent backdrop-filter backdrop-blur-lg shadow-md w-full">
-          <div className="relative grid grid-cols-2 items-center">
-            <a className="py-1 ml-5 mr-32 text-4xl " href="#">
-              College Management System
-            </a>
-            <div className="flex gap-2 mx-10 text-lg align-text-bottom">
-              <a
-                className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
-                href="#"
-              >
-                Home
-              </a>
-              <a
-                className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
-                href="#"
-              >
-                Choose
-              </a>
-              <a
-                className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
-                href="#"
-              >
-                Teacher
-              </a>
-              <a
-                className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
-                href="#"
-              >
-                Pricing
-              </a>
-              <a
-                className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
-                href="#"
-              >
-                Contact
-              </a>
-            </div>
-          </div>
-        </div>
+        <Navbar/>
         <div className="home absolute top-32 mt-10 w-[50%] px-36">
           <div className="">
             <h1 className="text-5xl font-serif mb-8">
