@@ -1,39 +1,37 @@
 import React, { useEffect, useState } from "react";
-import Papa from 'papaparse'
-import axios from "axios"
+import Papa from "papaparse";
+import axios from "axios";
 import { getLoginSession } from "../../../../lib/auth";
 import { findUser } from "../../../../lib/user";
-// import Navbar from "../../components/Navbar"
+import Navbar from "../../../../components/Navbar";
 import crypto from "crypto";
 
-export default function Dashboard({userDetails}) {
-
-  const [students, setstudents] = useState()
-  const [sort, setsort] = useState(1)
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+export default function Dashboard({ userDetails }) {
+  const [students, setstudents] = useState();
+  const [sort, setsort] = useState(1);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [status, setStatus] = useState(null);
-  const [subjects,setSubjects] = useState(null);
-  const user = JSON.parse(userDetails)
-  console.log("user",user);
+  const [subjects, setSubjects] = useState(null);
+  const user = JSON.parse(userDetails);
+  console.log("user", user);
   // var data = props.data.done
   // console.log("data nanfa",data)
   const changeHandler = (event) => {
     Papa.parse(event.target.files[0], {
-        header: true,
-        skipEmptyLines: true,
-        complete: function (results) {
-          setstudents(results.data)
-          setSubjects(["IOT","MAI","ML","BDA","BI"])
-        },
-      });
+      header: true,
+      skipEmptyLines: true,
+      complete: function (results) {
+        setstudents(results.data);
+        setSubjects(["IOT", "MAI", "ML", "BDA", "BI"]);
+      },
+    });
   };
 
-  useEffect(()=>{
-    console.log("students",students,subjects)
-  },[students])
-
+  useEffect(() => {
+    console.log("students", students, subjects);
+  }, [students]);
 
   // useEffect(()=>{
   //   if(data){
@@ -42,34 +40,28 @@ export default function Dashboard({userDetails}) {
   //   }
   // },[data])
 
+  function uploadStudents() {
+    fetch("../../api/college/students", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ details: students, subjects: subjects }),
+    });
+  }
 
-  function uploadStudents(){  
-  
-      fetch("../../api/college/students", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body:JSON.stringify({details:students , subjects:subjects})
-        }
-        )
-    }
-
-    function deleteStudent(id){
-      // console.log("id",id)
-      // fetch("../api/collegeStudents", {
-      //   method: "Delete",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({id:id}),
-      // }
-      // )
-    }
-
-
-
+  function deleteStudent(id) {
+    // console.log("id",id)
+    // fetch("../api/collegeStudents", {
+    //   method: "Delete",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({id:id}),
+    // }
+    // )
+  }
 
   return (
     // {https://aufaitux.com/wp-content/uploads/2022/11/pasted-image-2.png}
-  <div className=" bg-gray-300 h-screen overflow-auto ">
-    {/* <Navbar/> */}
+    <div className="min-h-screen mt-[9vh] overflow-auto ">
+      <Navbar />
       {/* <div className="p-8">
         <div className="bg-white rounded-md">
           <h1 className="text-2xl font-semibold py-4 text-center">Overview</h1>
@@ -92,21 +84,32 @@ export default function Dashboard({userDetails}) {
           </div>
         </div>
       </div> */}
-    
-      <div className="px-8">
-      <input
-      type="file"
-      name="file"
-      accept=".csv"
-      onChange={changeHandler}
-      style={{ display: "block", margin: "10px auto" }}
-    />
-        <button onClick={uploadStudents} className="border border-blue-700 bg-blue-400 px-2 py-2 rounded-full my-2 ">Upload</button>
-        
+
+      <div className="px-8 py-5 ">
+        <div className="flex w-[70%] relative pb-7 ">
+          <div>
+            <input
+              type="file"
+              name="file"
+              accept=".csv"
+              className="bg-blue-300 mx-5 text-white "
+              onChange={changeHandler}
+              style={{ display: "block", margin: "10px auto" }}
+            />
+          </div>
+          <div className=" absolute right-0">
+            <button
+              onClick={uploadStudents}
+              className="border text-center  bg-green-600 px-2 py-2 tracking-wide rounded-md text-white my-2 "
+            >
+              Upload File
+            </button>
+          </div>
+        </div>
         <table className="bg-white rounded-lg border w-full">
           <thead className="">
-            <tr className="border">
-              <th className="py-2">S.No.</th>
+            <tr className="border bg-blue-300">
+              <th className="py-3">S.No.</th>
               <th>Name</th>
               <th>Roll No.</th>
               <th>Phone</th>
@@ -114,39 +117,28 @@ export default function Dashboard({userDetails}) {
             </tr>
           </thead>
           <tbody>
-           
-
-           {students && (
-            <>
-           
-             {students.map((item)=>(
-              <> 
-                  <h1>{console.log(item)}</h1>
-                  <tr className="border font-light w-[100%] mx-2">
-                    <th className="font-normal ">{item["S.No"]}</th>
-                    <th className="font-normal">{item["First Name"]}</th>
-                    <th className="font-normal">
-                      {item["RollNo."]}
-                    </th>
-                    <th className="font-normal">
-                     {item["Student Mobile"]}
-                    </th>
-                    <th className="font-normal">
-                     {item["College Mail ID"]}
-                    </th>
-                  </tr>
-
+            {students && (
+              <>
+                {students.map((item) => (
+                  <>
+                    <h1>{console.log(item)}</h1>
+                    <tr className="border font-light w-[100%] mx-2 hover:bg-gray-100">
+                      <th className="font-normal py-2">{item["S.No"]}</th>
+                      <th className="font-normal py-2">{item["First Name"]}</th>
+                      <th className="font-normal py-2">{item["RollNo."]}</th>
+                      <th className="font-normal py-2">{item["Student Mobile"]}</th>
+                      <th className="font-normal py-2">{item["College Mail ID"]}</th>
+                    </tr>
+                  </>
+                ))}
               </>
-              ))} 
-            </>
-           )}
+            )}
           </tbody>
         </table>
       </div>
     </div>
   );
 }
-
 
 // export const getServerSideProps = async ()=>{
 
@@ -158,8 +150,8 @@ export default function Dashboard({userDetails}) {
 //       props: {
 //         data: data,
 //       },
-//     }; 
-// 
+//     };
+//
 export const getServerSideProps = async ({ req, res }) => {
   const session = await getLoginSession(req);
   const user = (session?._doc && (await findUser(session._doc))) ?? null;
@@ -175,7 +167,9 @@ export const getServerSideProps = async ({ req, res }) => {
   }
 
   if (user) {
-    const inputHash = crypto.pbkdf2Sync("Provast@123", user.salt, 1000, 64, "sha512").toString("hex");
+    const inputHash = crypto
+      .pbkdf2Sync("Provast@123", user.salt, 1000, 64, "sha512")
+      .toString("hex");
     const passwordsMatch = user.hash === inputHash;
     if (passwordsMatch) {
       return {

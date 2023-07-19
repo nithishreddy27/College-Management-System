@@ -185,7 +185,7 @@ export default function index({ userDetails }) {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-6 gap-4">
+                  <div className="">
                     <div className="col-span-6 sm:col-span-3 mt-4">
                       <div className="flex">
                         <label
@@ -229,7 +229,7 @@ export default function index({ userDetails }) {
                   </div>
                   <div className="mt-4">
                     <button
-                      className="bg-gradient-to-t from-pink-500 via-pink-600 to-pink-700 text-white px-8 py-4 rounded-lg hover:-translate-y-2 ease-in-out duration-300 "
+                      className="bg-gradient-to-t from-pink-500 via-pink-600 to-pink-700 w-full text-white px-8 py-3 rounded-lg  "
                       type="submit"
                     >
                       {" "}
@@ -409,7 +409,7 @@ export default function index({ userDetails }) {
                       </div>
                     </div>
 
-                    <div className="col-span-6 sm:col-span-2 relative -top-[23px]">
+                    <div className="col-span-6  relative -top-[25px]">
                       <label
                         className="flex items-center mb-1 h-full text-sm font-medium text-gray-700 "
                         id="headlessui-listbox-label-1"
@@ -480,7 +480,7 @@ export default function index({ userDetails }) {
                   </div>
                   <div className="mt-4">
                     <button
-                      className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 "
+                      className="bg-gradient-to-t from-pink-500 via-pink-600 to-pink-700 w-full text-white px-8 py-3 rounded-lg  "
                       type="submit"
                     >
                       {" "}
