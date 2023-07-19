@@ -10,20 +10,16 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="border-b border-gray-300 py-2 fixed top-[-8px] w-[100%] z-40 bg-slate-50">
-        <div className="flex items-center justify-between xl:max-w-7xl xl:mx-auto max-w-full px-[8%] flex-wrap w-full">
+      <div className="border-b border-gray-300 py-2 fixed top-[-7px] w-[100%] z-40 bg-slate-50">
+        <div className="flex items-center justify-between  flex-wrap ">
           {/* <h1>Provast</h1> */}
-          {/* <img
-            src="https://www.provast.in/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdj7nomqfd%2Fimage%2Fupload%2Fv1652909540%2Fpvast_B_fpwhlu.png&w=2048&q=75"
-            width={220}
-            height={55}
-          /> */}
-          <FiMenu
+         
+          {/* <FiMenu
             className="lg:hidden block h-6 w-6 cursor-pointer"
             onClick={() => setOpen(!open)}
-          />
+          /> */}
           {user && (
-           <div className="navbar fixed top-0 z-50 py-4 px-10 font-serif bg-transparent backdrop-filter backdrop-blur-lg shadow-md w-full">
+           <div className="navbar fixed top-0 z-50 py-2 px-6 font-serif bg-transparent backdrop-filter backdrop-blur-lg shadow-md w-full">
            <div className="relative grid grid-cols-2 items-center">
              <Link className="py-1 ml-5 mr-32 text-4xl " href="#">
                College Management System

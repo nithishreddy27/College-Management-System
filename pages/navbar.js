@@ -10,7 +10,7 @@ export default function Navbar() {
         <div className="flex gap-2 mx-10 text-lg align-text-bottom">
           <a
             className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
-            href="#"
+            href="#" 
           >
             Home
           </a>
