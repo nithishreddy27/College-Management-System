@@ -16,7 +16,7 @@ export default function Dashboard({userDetails}) {
   const [status, setStatus] = useState(null);
   const [subjects,setSubjects] = useState(null);
   const user = JSON.parse(userDetails)
-  console.log("user",user);
+  // console.log("user",user);
   // var data = props.data.done
   // console.log("data nanfa",data)
   const changeHandler = (event) => {

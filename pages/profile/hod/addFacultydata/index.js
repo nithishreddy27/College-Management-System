@@ -129,7 +129,7 @@ export default function Dashboard({userDetails}) {
                       {item["RollNo."]}
                     </th>
                     <th className="font-normal">
-                     {item["Faculty Mobile"]}
+                     {item["Student Mobile"]}
                     </th>
                     <th className="font-normal">
                      {item["College Mail ID"]}

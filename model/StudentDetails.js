@@ -8,11 +8,11 @@ const userSchema = new mongoose.Schema(
     studentSubjects:[{
       name:{type:String},
       facultyName:{type:String},
-      subjectAttendance:{type:Number},
+      subjectAttendance:[{date:{type:Date},status:{type:Boolean},attendance:{type:Number}}],
       totalSubjectClasses:{type:Number}
     }]
   },
   { timestamps: true }
 );
 
-export default mongoose.models.users || mongoose.model("studentDetails", userSchema);
+export default mongoose.models.studentDetails || mongoose.model("studentDetails", userSchema);

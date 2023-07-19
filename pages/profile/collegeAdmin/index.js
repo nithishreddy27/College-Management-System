@@ -403,13 +403,13 @@ export default function index({ userDetails }) {
                         name="branch"
                         className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
                       >
-                        <option value="male">CSE</option>
-                        <option value="female">IT</option>
-                        <option value="et">ET</option>
-                        <option value="ece">ECE</option>
-                        <option value="eee">EEE</option>
-                        <option value="mech">MECH</option>
-                        <option value="civil">CIVIL</option>
+                        <option value="CSE">CSE</option>
+                        <option value="IT">IT</option>
+                        <option value="ET">ET</option>
+                        <option value="ECE">ECE</option>
+                        <option value="EEE">EEE</option>
+                        <option value="MECH">MECH</option>
+                        <option value="CIVIL">CIVIL</option>
                       </select>
                     </div>
                   </div>
