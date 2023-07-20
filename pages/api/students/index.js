@@ -6,13 +6,14 @@ export default async function(req, res){
     await dbConnect()
     switch (req.method) {
         case "GET":
-            res.status(200).send(data)
+            console.log("in get");
+            res.status(200).send({"done":"true"})
             break;
         case "POST":
             const college = req.body.college;
             const studentClass = req.body.studentClass;
             console.log("in api",studentClass,college)
-            const students = await Register.find({"college.code":college,"department.name":studentClass})
+            const students = await Register.find({"college.code":college,"department.name":studentClass,"position":"student"})
             console.log("students",students.length)
             res.status(200).send({students:students})
         // case "PUT":

@@ -49,21 +49,20 @@ export default async function handler(req,res){
                             name:student["Branch"],
                             code:"123"
                         },
-                        studentSubjects:[{name:subjects[0]},{name:subjects[1]},{name:subjects[2]},{name:subjects[3]},{name:subjects[4]}]
-
+                        studentSubjects:[{name:subjects[0]},{name:subjects[1]},{name:subjects[2]},{name:subjects[3]},{name:subjects[4]}],
+                        mentorId:student["mentorId"]
                     } 
-                    await Register.create(details);
-                    // const user = await Register.findOne({"email":student["College Mail ID"]})
-                    // const studentSubjectDeails = {
-                    //     "user":user?._id,
-                    //     "studentSubjects":[{name:subjects[0]},{name:subjects[1]},{name:subjects[2]},{name:subjects[3]},{name:subjects[4]}]
-                    // }
-                    // console.log("user subjects",studentSubjectDeails)
-                    // await StudentDetails.create(studentSubjectDeails)
-
+                        await Register.create(details);
+                        const user = await Register.findOne({"email":student["College Mail ID"]})
+                        const studentSubjectDeails = {
+                            "user":user?._id,
+                            "studentSubjects":[{name:subjects[0]},{name:subjects[1]},{name:subjects[2]},{name:subjects[3]},{name:subjects[4]}]
+                        }
+                        console.log("student",studentSubjectDeails)
+                        await StudentDetails.create(studentSubjectDeails)
                 }
                 else{
-                    res.send({"error":"user already exist"})
+                    console.log("already exist")
                 }
             })
         

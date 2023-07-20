@@ -3,7 +3,7 @@
 import { addDetails } from "../../../lib/user"
 
 export default async function handler(req,res){
-    console.log(" inside add api ",req.body);
+    // console.log(" inside add api ",req.body);
     try{
       // if(req.body.notificationMethod == "college"){
           var data=await addDetails(req.body)

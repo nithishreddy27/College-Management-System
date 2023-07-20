@@ -76,14 +76,10 @@ const userSchema = new mongoose.Schema(
       name:{type:String},
       class:{type:String},
     }],
-    attendance:{type:Number},
-    totalClasses:{type:Number},
-    studentSubjects:[{
-      name:{type:String},
-      facultyName:{type:String},
-      subjectAttendance:{type:Number},
-      totalSubjectClasses:{type:Number}
-    }]
+    mentorId:{
+      type:String
+    }
+    
   },
   { timestamps: true }
 );
