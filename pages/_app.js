@@ -4,7 +4,9 @@ import Router from "next/router";
 import Loading from "../components/Loading";
 import {motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
-
+// import { ResumeContext } from "../src/context/ResumeContext"
+// import { LetterContextProvider } from "../src/context/LetterContext";
+import { ResumeContextProvider } from "../src/context/ResumeContext";
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
 
@@ -22,6 +24,11 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+    {/* <ResumeContext> */}
+    
+{/* <LetterContextProvider> */}
+    <ResumeContextProvider>
+
     <AnimatePresence mode='wait'>
     <motion.div 
       key={router.route}
@@ -62,7 +69,13 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </motion.div>
     </AnimatePresence>
+    </ResumeContextProvider>
+
+    {/* </ResumeContext> */}
+{/* </LetterContextProvider> */}
+
     </>
+
   );
 }
 
