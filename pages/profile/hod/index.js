@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Navbar from '../../../components/Navbar'
 import { getLoginSession } from '../../../lib/auth';
 import { findUser } from '../../../lib/user';
+import Link from "next/link"
 import crypto from "crypto";
 
 export default function index({userDetails}) {
@@ -17,6 +18,8 @@ export default function index({userDetails}) {
             <button>Add Faculty</button>
             <button>Add Lab Incharge</button>
             <button>Add Student</button>
+            <Link href="/profile/hod/leave" className='mx-auto'>Leave</Link>
+            <Link href="/profile/hod/circular" className='mx-auto'>Circular</Link>
             <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-2xl relative grid h-screen place-items-center">
           <div className="bg-white pt-1 pb-8 shadow-xl rounded-xl px-10 ">
             <form
@@ -316,7 +319,7 @@ export const getServerSideProps = async ({ req, res }) => {
 
 
     if(user){
-      const inputHash = crypto.pbkdf2Sync("Provast@123", user.salt, 1000, 64, "sha512").toString("hex");
+      const inputHash = crypto.pbkdf2Sync("test@123", user.salt, 1000, 64, "sha512").toString("hex");
     const passwordsMatch = user.hash === inputHash; 
     if (passwordsMatch) {
       // console.log(" first first first", user);

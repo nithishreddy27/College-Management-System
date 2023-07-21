@@ -124,6 +124,8 @@ const Login = () => {
                      type="password"
                    />
                  </div>
+                 <p className="text-red-600 ml-5"> {errorMsg}</p>
+
                  <div className="flex gap-12 mt-3 px-5  ">
                    <div className="text-sm mt-1 hover:underline underline-offset-1">
                      <button onClick={()=>{setsign('signup')}} className="hover:underline">Are you a new user? </button>
@@ -189,6 +191,9 @@ const Login = () => {
                      type="password"
                    />
                  </div>
+                  {/* {errorMsg && ( */}
+                    <p className="text-red-600">Erorr {errorMsg}</p>
+                  {/* )} */}
                  <div className="flex  mt-3 px-5  ">
                    <div className="text-sm mt-1 hover:underline underline-offset-1">
                      <button onClick={()=>setsign('signin')} className="hover:underline">Already has an account? login </button>

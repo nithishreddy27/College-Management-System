@@ -9,7 +9,7 @@ import { findUser } from "../../lib/user";
 export default function changePassword({ userDetails }) {
   const user = JSON.parse(userDetails);
   const router = useRouter();
-  const [currentPassword, setcurrentPassword] = useState("Provast@123");
+  const [currentPassword, setcurrentPassword] = useState("test@123");
   const [newPassword, setnewPassword] = useState();
   const [confirmPassword, setconfirmPassword] = useState();
 

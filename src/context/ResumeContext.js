@@ -5,6 +5,8 @@ import debounce from "../../lib/loadash"
 
 const ResumeContext = createContext();
 export function ResumeContextProvider({ children }) {
+ 
+  
   // const [resume, setResume] = useState(null);
   // const [profile, setProfile] = useState(null);
   // const [social, setSocial] = useState(null);
@@ -23,6 +25,12 @@ export function ResumeContextProvider({ children }) {
   // const [design, setdesign] = useState(null)
   const [modules, setmodules] = useState([1,2])
   const [letterBody ,setLetterBody] = useState()
+  const [letterSubject, setletterSubject] = useState()
+  const [salutation, setSalutation] = useState("Respected Mam")
+
+  const [fileNumber, setFileNumber] = useState()
+  const [circularBody, setCircularBody] = useState()
+  const [circularDisplay, setCircularDisplay] = useState([])
   // const [count, setcount] = useState(0)
   // const [template, settemplate] = useState(second)
   // const debounceUpdateResume = useMemo(() => {
@@ -89,7 +97,17 @@ export function ResumeContextProvider({ children }) {
     modules,
     setmodules,
     letterBody,
-    setLetterBody
+    setLetterBody,
+    letterSubject,
+    setletterSubject,
+    salutation,
+    setSalutation,
+    fileNumber,
+    setFileNumber,
+    circularBody,
+    setCircularBody,
+    circularDisplay,
+    setCircularDisplay
   };
   return <ResumeContext.Provider value={state}>{children}</ResumeContext.Provider>;
 }

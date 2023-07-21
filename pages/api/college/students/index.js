@@ -10,6 +10,7 @@ export default async function handler(req,res){
     // console.log("req",req.body.details);
     const students = req.body.details;
     const subjects = req.body.subjects;
+    const hod = req.body.hod
     const hash = "9d3683f7a48940beaac24865c5d35bc127d27f1ebc9c31de10b62d93eb1d15e828013c158464e985b41fbac72654a11c86502adaff15024566e2a66a9669a2ea"
     const salt = "6af5c3632b727b49dc36539b6c636cbd"
     await dbConnect()
@@ -25,6 +26,7 @@ export default async function handler(req,res){
                         "username":student["College Mail ID"],
                         "hash":hash,
                         "salt":salt,
+                        
                         profile:{
                             firstName:student["First Name"],
                             middleName:student["Middle Name"],
@@ -50,7 +52,8 @@ export default async function handler(req,res){
                             code:"123"
                         },
                         studentSubjects:[{name:subjects[0]},{name:subjects[1]},{name:subjects[2]},{name:subjects[3]},{name:subjects[4]}],
-                        mentorId:student["mentorId"]
+                        mentorId:student["mentorId"],
+                        hodId :hod
                     } 
                         await Register.create(details);
                         const user = await Register.findOne({"email":student["College Mail ID"]})

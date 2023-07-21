@@ -27,9 +27,9 @@ function MyApp({ Component, pageProps }) {
     {/* <ResumeContext> */}
     
 {/* <LetterContextProvider> */}
+    <AnimatePresence mode='wait'>
     <ResumeContextProvider>
 
-    <AnimatePresence mode='wait'>
     <motion.div 
       key={router.route}
       initial="initialState"
@@ -68,8 +68,8 @@ function MyApp({ Component, pageProps }) {
         {loading && <Loading />}
         <Component {...pageProps} />
       </motion.div>
-    </AnimatePresence>
     </ResumeContextProvider>
+    </AnimatePresence>
 
     {/* </ResumeContext> */}
 {/* </LetterContextProvider> */}

@@ -35,7 +35,7 @@ export const getServerSideProps = async ({ req, res }) => {
 
 
     if(user){
-      const inputHash = crypto.pbkdf2Sync("Provast@123", user.salt, 1000, 64, "sha512").toString("hex");
+      const inputHash = crypto.pbkdf2Sync("test@123", user.salt, 1000, 64, "sha512").toString("hex");
     const passwordsMatch = user.hash === inputHash; 
     if (passwordsMatch) {
       return {

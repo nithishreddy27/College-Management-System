@@ -44,7 +44,7 @@ export default function Dashboard({ userDetails }) {
     fetch("../../api/college/students", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ details: students, subjects: subjects }),
+      body: JSON.stringify({ details: students, subjects: subjects , hod:user._id }),
     });
   }
 
@@ -60,7 +60,7 @@ export default function Dashboard({ userDetails }) {
 
   return (
     // {https://aufaitux.com/wp-content/uploads/2022/11/pasted-image-2.png}
-    <div className="min-h-screen mt-[9vh] overflow-auto ">
+    <div className="min-h-screen mt-36 overflow-auto ">
       <Navbar />
       {/* <div className="p-8">
         <div className="bg-white rounded-md">
@@ -92,7 +92,7 @@ export default function Dashboard({ userDetails }) {
               type="file"
               name="file"
               accept=".csv"
-              className="bg-blue-300 mx-5 text-white "
+              className="bg-blue-300 mx-5 text-white rounded-md"
               onChange={changeHandler}
               style={{ display: "block", margin: "10px auto" }}
             />
@@ -168,7 +168,7 @@ export const getServerSideProps = async ({ req, res }) => {
 
   if (user) {
     const inputHash = crypto
-      .pbkdf2Sync("Provast@123", user.salt, 1000, 64, "sha512")
+      .pbkdf2Sync("test@123", user.salt, 1000, 64, "sha512")
       .toString("hex");
     const passwordsMatch = user.hash === inputHash;
     if (passwordsMatch) {
