@@ -1,114 +1,193 @@
-import React, { useEffect, useState } from 'react'
-import { getLoginSession } from '../../../../lib/auth';
-import { findUser } from '../../../../lib/user';
+import React, { useEffect, useState } from "react";
+import { getLoginSession } from "../../../../lib/auth";
+import { findUser } from "../../../../lib/user";
 import crypto from "crypto";
-import { useStudents } from '../../../../src/hooks/useStudents';
-import axios from 'axios';
+import { useStudents } from "../../../../src/hooks/useStudents";
+import axios from "axios";
 
-export default function index({userDetails}) {
-    const user = JSON.parse(userDetails);
-    // console.log(user)
-    // const students = useStudents(user)
-    const [students, setStudents] = useState();
-    const [faculty, setFaculty] = useState();
+export default function Index({ userDetails }) {
+  const user = JSON.parse(userDetails);
+  // console.log(user)
+  // const students = useStudents(user)
+  const [students, setStudents] = useState();
+  const [faculty, setFaculty] = useState();
 
+  async function getStudents() {
+    const data = await axios.get(
+      `../../../api/auth/user/details?collegeCode=${user.college.paraphrase}&branch=${user.department}`
+    );
+    // console.log("data",data.data.details);
+    setStudents(data.data.details);
+  }
 
-    async function getStudents(){
-        const data = await axios.get(`../../../api/auth/user/details?collegeCode=${user.college.paraphrase}&branch=${user.department}`)
-        // console.log("data",data.data.details);
-        setStudents(data.data.details);
-    }    
+  async function getFaculty() {
+    if (user) {
+      const data = await axios.get(
+        `../../../api/auth/user/college?collegeCode=${user.college.paraphrase}&branch=${user.department}`
+      );
+      console.log("data", data.data.details);
+      setFaculty(data.data.details);
+    }
+  }
 
-
-    async function getFaculty(){
-        if(user){
-            const data = await axios.get(`../../../api/auth/user/college?collegeCode=${user.college.paraphrase}&branch=${user.department}`)
-            console.log("data",data.data.details);
-            setFaculty(data.data.details);
-        }
-    } 
-
-    // useEffect(()=>{
-    //     getFaculty()
-    // },[user])   
-    
+  // useEffect(()=>{
+  //     getFaculty()
+  // },[user])
 
   return (
-    <div>
-        <button onClick={getStudents} className='mx-2'>Display students</button>
-        <button onClick={getFaculty}>Display teachers</button>
-        
-
-        {students && (
-            <>
-                {students.map((student)=>(
-                    <h1>
-                        {student.email}
-                    </h1> 
+    <>
+      <div className="mx-20 my-10 px-10 py-10 shadow-lg rounded-lg">
+        <div className="grid grid-cols-2 mt-6 mx-10">
+          <div>
+            <button
+              onClick={getStudents}
+              className="mx-2 mb-2 bg-gradient-to-t from-pink-500 via-pink-600 to-pink-700 text-white rounded-lg px-4 py-2 hover:scale-110 transition-transform duration-300"
+            >
+              Display students
+            </button>
+            {students && (
+              <>
+                {students.map((student) => (
+                  <h1 key={student._id}>{student.email}</h1>
                 ))}
-            </>
-        )}
-        {faculty && (
-            <>
-                {faculty.map((fu)=>(
-                    <h1>
-                        {fu.email} {fu.rollNumber.value} {fu.profile.firstName}
-                    </h1> 
+              </>
+            )}
+          </div>
+          <div>
+            <button
+              onClick={getFaculty}
+              className="mx-2 mb-2 bg-gradient-to-t from-pink-500 via-pink-600 to-pink-700 text-white rounded-lg px-4 py-2 hover:scale-110 transition-transform duration-300"
+            >
+              Display teachers
+            </button>
+            {faculty && (
+              <table className="w-full table-fixed overflow-scroll border border-collapse border-slate-400">
+                <thead className="h-10 border-slate-300 hover:bg-neutral-200">
+                  <td className="text-bold px-6 py-1 text-[14px] border border-slate-300  hover:bg-neutral-300 whitespace-nowrap">
+                    Faculty Email
+                  </td>
+                  <td className="text-bold px-6 py-1 text-[14px] border border-slate-300  hover:bg-neutral-300 whitespace-nowrap">
+                    Faculty Roll No.
+                  </td>
+                  <td className="text-bold px-6 py-1 text-[14px] border border-slate-300  hover:bg-neutral-300 whitespace-nowrap">
+                    Faculty Name
+                  </td>
+                </thead>
+              </table>
+            )}
+            {faculty && (
+              <>
+                {faculty.map((fu) => (
+                  <>
+                    <table
+                      key={fu._id}
+                      className="w-full table-fixed overflow-scroll border border-collapse border-slate-400"
+                    >
+                      <tr className="h-10 border-slate-300 hover:bg-neutral-200">
+                        <td className="px-6 py-1 text-xs border border-slate-300  hover:bg-neutral-300 whitespace-nowrap">
+                          {fu.email}
+                        </td>
+                        <td className="px-6 py-1 text-xs border border-slate-300  hover:bg-neutral-300 whitespace-nowrap">
+                          {fu.rollNumber.value}
+                        </td>
+                        <td className="px-6 py-1 text-xs border border-slate-300  hover:bg-neutral-300 whitespace-nowrap">
+                          {fu.profile.firstName}
+                        </td>
+                      </tr>
+                    </table>
+                    {/* <h1 key={fu._id}>
+                    {fu.email} {fu.rollNumber.value} {fu.profile.firstName}
+                  </h1> */}
+                  </>
                 ))}
-            </>
-        )}
-        <div className='mt-5'>
-        {console.log("user",user)}
-        <h1>Add Subject</h1>
-        <form action="../../../api/students/subjects" method='POST'>
-            <label htmlFor="collegeName" className='mx-4'>College Name </label>
-            <input type="text" value={user?.college.paraphrase} onChange={()=>{}} name='collegeName'/>
-            <label htmlFor="branchName" className='mx-4'>Branch Name </label>
-            <input type="text" value={user?.department} onChange={()=>{}} name='branchName'/>
-            <label htmlFor="name">Subject Name</label>
-            <input type="text" name='subjectName' className='border mx-4'/>
-            
-            <label htmlFor="name">Faculty Roll number</label>
-            <input type="text" className='border mx-4' name='rollNumber' />
-            <div className="">
-                        <select
-                          name="faculty"
-                          className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
-                        >
-                            {faculty?.map((fac)=>(
-                                <option value={fac._id} >{fac.profile.firstName}</option>
-                            ))}
-                          
-                        </select>
-                      </div>
-            
-            <button type="submit">submit</button>
-        </form>
+              </>
+            )}
+          </div>
         </div>
 
-    </div>
-  )
+        <div className="mt-5">
+          {console.log("user", user)}
+          <h1 className="flex justify-center my-7 text-xl">Add Subject</h1>
+          <form action="../../../api/students/subjects" method="POST">
+            <div className="grid grid-cols-2 my-4 gap-4">
+              <div>
+                <label htmlFor="collegeName" className="">
+                  College Name{" "}
+                </label>
+                <input
+                  type="text"
+                  value={user?.college.paraphrase}
+                  onChange={() => {}}
+                  name="collegeName"
+                />
+              </div>
+              <div>
+                <label htmlFor="branchName" className="">
+                  Branch Name{" "}
+                </label>
+                <input
+                  type="text"
+                  value={user?.department}
+                  onChange={() => {}}
+                  name="branchName"
+                />
+              </div>
+              <div>
+                <label htmlFor="name" className="mr-3">
+                  Subject Name
+                </label>
+                <input type="text" name="subjectName" className="border" />
+              </div>
+              <div>
+                <label htmlFor="name" className="mr-3">
+                  Faculty Roll number
+                </label>
+                <input type="text" className="border" name="rollNumber" />
+              </div>
+            </div>
+            <div className="">
+              <select
+                name="faculty"
+                className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-orange-500"
+              >
+                {faculty?.map((fac) => (
+                  <option key={fac._id}>{fac.profile.firstName}</option>
+                ))}
+              </select>
+            </div>
+
+            <button
+              type="submit"
+              className="my-4 bg-gradient-to-t from-pink-500 via-pink-600 to-pink-700 text-white rounded-lg px-6 py-1 hover:scale-110 transition-transform duration-300"
+            >
+              submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export const getServerSideProps = async ({ req, res }) => {
-    const session = await getLoginSession(req);
-    const user = (session?._doc && (await findUser(session._doc))) ?? null;
-    
+  const session = await getLoginSession(req);
+  const user = (session?._doc && (await findUser(session._doc))) ?? null;
 
-    const data = JSON.stringify(user)
-    if (!user) {
-      return {
-        redirect: {
-          destination: "/auth/login",
-          permanent: false,
-        },
-      };
-    }
+  const data = JSON.stringify(user);
+  if (!user) {
+    return {
+      redirect: {
+        destination: "/auth/login",
+        permanent: false,
+      },
+    };
+  }
 
-
-    if(user){
-      const inputHash = crypto.pbkdf2Sync("test@123", user.salt, 1000, 64, "sha512").toString("hex");
-    const passwordsMatch = user.hash === inputHash; 
+  if (user) {
+    const inputHash = crypto
+      .pbkdf2Sync("test@123", user.salt, 1000, 64, "sha512")
+      .toString("hex");
+    const passwordsMatch = user.hash === inputHash;
     if (passwordsMatch) {
       // console.log(" first first first", user);
       return {
@@ -118,21 +197,18 @@ export const getServerSideProps = async ({ req, res }) => {
         },
       };
     }
-    
   }
-    if (user.position !== "hod") {
-      return {
-        redirect: {
-          destination: `/profile/${user.position}`,
-          permanent: false,
-        },
-      };
-    }
-  return {
-      props: {
-      
-        userDetails:data
-  
+  if (user.position !== "hod") {
+    return {
+      redirect: {
+        destination: `/profile/${user.position}`,
+        permanent: false,
       },
     };
+  }
+  return {
+    props: {
+      userDetails: data,
+    },
   };
+};
