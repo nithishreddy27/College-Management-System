@@ -15,8 +15,19 @@ export default function Dashboard({userDetails}) {
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState(null);
   const [subjects,setSubjects] = useState(null);
+  const [collegeDetails, setcollegeDetails] = useState()
   const user = JSON.parse(userDetails)
   console.log("user",user);
+
+  useEffect(()=>{
+    if(user){
+      setcollegeDetails({
+        name:user.college.name,
+        code:user.college.code,
+        paraphrase:user.college.paraphrase
+      })
+    }
+  },[user])
   // var data = props.data.done
   // console.log("data nanfa",data)
   const changeHandler = (event) => {
@@ -48,7 +59,7 @@ export default function Dashboard({userDetails}) {
       fetch("../../api/college/faculty", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body:JSON.stringify({details:faculty , subjects:subjects})
+          body:JSON.stringify({details:faculty , subjects:subjects ,collegeDetails:collegeDetails })
         }
         )
     }

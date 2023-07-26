@@ -192,7 +192,7 @@ const Login = () => {
                    />
                  </div>
                   {/* {errorMsg && ( */}
-                    <p className="text-red-600">Erorr {errorMsg}</p>
+                    {/* <p className="text-red-600">Erorr  {errorMsg}</p> */}
                   {/* )} */}
                  <div className="flex  mt-3 px-5  ">
                    <div className="text-sm mt-1 hover:underline underline-offset-1">

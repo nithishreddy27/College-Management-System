@@ -3,7 +3,9 @@ import { getLoginSession } from '../../../../lib/auth';
 import { findUser } from '../../../../lib/user';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-
+import {FcCheckmark} from "react-icons/fc"
+import {ImCross} from "react-icons/im"
+import { IoMdCheckmarkCircle } from 'react-icons/io';
 export default function index({leaveLetters}) {
   const leaveLetter  = JSON.parse(leaveLetters)
   console.log("leave",leaveLetter)
@@ -23,6 +25,30 @@ export default function index({leaveLetters}) {
                     router.push(`/profile/hod/leave/${student.user}?index=${index}`)
                   }}>
                     {letter.date.slice(0,10)}
+                    {letter.mentorApproved && (
+                      <div>
+                      mentor : 
+                      <span> <FcCheckmark></FcCheckmark></span>
+                      </div>
+                    )}
+                    {!letter.mentorApproved && (
+                      <div>
+                      mentor : 
+                      <span> <ImCross></ImCross></span>
+                      </div>
+                    )}
+                    {letter.hodApproved && (
+                      <div>
+                      HOD : 
+                      <span> <FcCheckmark></FcCheckmark></span>
+                      </div>
+                    )}
+                    {!letter.hodApproved && (
+                      <div>
+                      HOD : 
+                      <span> <ImCross></ImCross></span>
+                      </div>
+                    )}
                   </div>
                 )}
               <p className='text-lg'>Accepted</p> 
@@ -31,6 +57,33 @@ export default function index({leaveLetters}) {
                     router.push(`/profile/hod/leave/${student.user}?index=${index}`)
                   }}>
                     {letter.date.slice(0,10)}
+                    {/* {console.log(letter)} */}
+                    {letter.mentorApproved && (
+                      <div>
+                      mentor : 
+                      <span> <FcCheckmark></FcCheckmark></span>
+                      </div>
+                    )}
+                    {!letter.mentorApproved && (
+                      <div>
+                      mentor : 
+                      <span> <ImCross></ImCross></span>
+                      </div>
+                    )}
+                    {letter.hodApproved && (
+                      <div>
+                      HOD : 
+                      <span> <FcCheckmark></FcCheckmark></span>
+                      </div>
+                    )}
+                    {!letter.hodApproved && (
+                      <div>
+                      HOD : 
+                      <span> <ImCross></ImCross></span>
+                      </div>
+                    )}
+
+
                   </div>
                 )}
             </div>

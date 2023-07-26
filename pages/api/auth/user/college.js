@@ -19,7 +19,7 @@ const searchUserDetails = async (req, res) => {
   try {
     await dbConnect();
     const collegeCode = req.query.collegeCode;
-
+    console.log("college api",req.query)
     const details = await Register.find({ "college.paraphrase": collegeCode ,"position":"faculty","department.value":req.query.branch});
     console.log('details',details.length)
     if (details) {

@@ -14,7 +14,21 @@ export default function Dashboard({ userDetails }) {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(null);
   const [subjects,setSubjects] = useState(null);
+  const [collegeDetails, setcollegeDetails] = useState()
+
   const user = JSON.parse(userDetails)
+
+
+
+  useEffect(()=>{
+    if(user){
+      setcollegeDetails({
+        name:user.college.name,
+        code:user.college.code,
+        paraphrase:user.college.paraphrase
+      })
+    }
+  },[user])
   // console.log("user",user);
   // var data = props.data.done
   // console.log("data nanfa",data)
@@ -44,7 +58,7 @@ export default function Dashboard({ userDetails }) {
     fetch("../../api/college/students", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ details: students, subjects: subjects , hod:user._id }),
+      body: JSON.stringify({ details: students, subjects: subjects , hod:user._id ,collegeDetails:collegeDetails  }),
     });
   }
 
@@ -114,6 +128,7 @@ export default function Dashboard({ userDetails }) {
               <th>Roll No.</th>
               <th>Phone</th>
               <th>Email</th>
+              <th>Branch</th>
             </tr>
           </thead>
           <tbody>
@@ -128,6 +143,7 @@ export default function Dashboard({ userDetails }) {
                       <th className="font-normal py-2">{item["RollNo."]}</th>
                       <th className="font-normal py-2">{item["Student Mobile"]}</th>
                       <th className="font-normal py-2">{item["College Mail ID"]}</th>
+                      <th className="font-normal py-2">{item["Branch"]}</th>
                     </tr>
                   </>
                 ))}

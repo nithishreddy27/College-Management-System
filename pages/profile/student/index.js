@@ -3,7 +3,7 @@ import Navbar from "../../../components/Navbar";
 import { getLoginSession } from "../../../lib/auth";
 import { findUser } from "../../../lib/user";
 import crypto from "crypto";
-import { BiSolidUser } from "react-icons/bi";
+
 import { BsFillTelephoneFill  } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { BsFillHouseDoorFill } from "react-icons/bs";
@@ -17,6 +17,9 @@ export default function Index({ userDetails }) {
   return (
     <>
       <Navbar />
+      {user && (
+       
+
       <div className="min-h-screen">
         <div className="flex mt-[9.5vh]">
           <div className="w-[20%] bg-gray-800 h-screen">
@@ -37,7 +40,7 @@ export default function Index({ userDetails }) {
             <div className="px-8 py-3 text-white">
               <div className="flex gap-1 py-4">
                 <div className="text-2xl pt-1 cursor-pointer">
-                  <BiSolidUser />
+                  {/* <BiSolidUser /> */}
                 </div>
                 <div className="px-2 pl-6 py-1 ">
                 <p className=" text-white hover: cursor-pointer">
@@ -114,6 +117,8 @@ export default function Index({ userDetails }) {
           </div>
         </div>
       </div>
+      )}
+
     </>
   );
 }

@@ -10,6 +10,8 @@ export default async function handler(req,res){
     // console.log("req",req.body.details);
     const students = req.body.details;
     const subjects = req.body.subjects;
+    const college = req.body.collegeDetails
+
     const hod = req.body.hod
     const hash = "9d3683f7a48940beaac24865c5d35bc127d27f1ebc9c31de10b62d93eb1d15e828013c158464e985b41fbac72654a11c86502adaff15024566e2a66a9669a2ea"
     const salt = "6af5c3632b727b49dc36539b6c636cbd"
@@ -41,11 +43,11 @@ export default async function handler(req,res){
                         rollNumber:{value:student["RollNo."]},
                         position:"student",
                         college:{
-                            name:"CVR COLLEGE OF ENGINNEERING",
-                            code:"cvrcoe",
+                            name:college.name,
+                            code:college.code,
                             program:"BTECH",
                             specialisation:student["Branch"],
-                            paraphrase:"cvr"
+                            paraphrase:college.paraphrase
                         },
                         department:{
                             name:student["Branch"],
