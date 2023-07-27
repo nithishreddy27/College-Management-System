@@ -6,6 +6,8 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import {FcCheckmark} from "react-icons/fc"
 import {ImCross} from "react-icons/im"
+import { AiTwotoneDelete } from 'react-icons/ai';
+
 export default function index({userDetails,leaveLetters}) {
   // const {letterBody, setLetterBody} = useResumeContext();
   // console.log(modules)
@@ -16,76 +18,173 @@ export default function index({userDetails,leaveLetters}) {
   return (
     <div>
       Letters 
+
+      Create 
+      <div className=' border mx-5 h-[100mm] w-[70mm] relative'
+      onClick={()=>{router.push(`/profile/student/leave/letter`)}}>
+                <img className='' src='https://marketplace.canva.com/EAFhHrjw0Qk/1/0/1131w/canva-black-and-white-simple-classic-professional-cover-letter-G55SxrJRkKo.jpg' />
+                <div className="absolute top-0 left-0 w-full h-full bg-blue-100 opacity-50"></div>
+                <span className='absolute text-center font-bold text-2xl text-violet-950 cursor-pointer uppercase  font-serif top-5 px-14 py-32'>Leave letter </span>
+                
+            </div>
       {letters?.leaveLetters?.map((letter,index)=>(
         <div>
         <div key={letter._id}>
-          
-          letters 
           {/* {letter.leaveLetters.map((letter,index)=>( */}
             <div >
-              <p className='text-lg '>Pending</p>
                 {!letter.hodApproved && (
-                  <div className='min-h-[50px] min-w-[50px] m-10 border cursor-pointer border-red-500' onClick={()=>{
-                    router.push(`/profile/student/leave/${user._id}?index=${index}`)
-                  }}>
-                    {letter.date.slice(0,10)}
-                    {letter.mentorApproved && (
+                  
+                  <div className='min-h-[50px] min-w-[50px] m-10 '>
+              <p className='text-lg '>Pending</p>
+
+                    {!letter.hodApproved && (
+                <div className=' border mx-5 h-[100mm] w-[70mm] relative border-red-700 shadow-xl shadow-red-600' 
+                onClick={()=>{
+                  router.push(`/profile/student/leave/${user._id}?index=${index}`)
+                }}>
+                <img className='' src='https://marketplace.canva.com/EAFhHrjw0Qk/1/0/1131w/canva-black-and-white-simple-classic-professional-cover-letter-G55SxrJRkKo.jpg' />
+                <div className="absolute top-0 left-0 w-full h-full bg-blue-100 opacity-50"></div>
+                <span className='absolute text-center font-bold text-2xl text-violet-950 cursor-pointer uppercase   top-0 px-14'>{letter.date.slice(0,10)} </span>
+                {letter.mentorApproved && (
                       <div>
-                      mentor : 
-                      <span> <FcCheckmark></FcCheckmark></span>
+                     
+                      <span className='absolute text-center font-bold text-2xl text-violet-950 cursor-pointer uppercase   top-5 px-14 py-32'> mentor : <FcCheckmark></FcCheckmark></span>
+                      <span> </span>
                       </div>
                     )}
                     {!letter.mentorApproved && (
                       <div>
-                      mentor : 
-                      <span> <ImCross></ImCross></span>
+                    
+                      <span className='absolute text-center font-bold text-2xl text-violet-950 cursor-pointer uppercase   top-5 px-14 py-32'> mentor : <ImCross></ImCross></span>
+                      {/* <span> </span> */}
                       </div>
                     )}
-                    {letter.hodApproved && (
+                {letter.hodApproved && (
                       <div>
-                      HOD : 
-                      <span> <FcCheckmark></FcCheckmark></span>
+                     
+                      <span className='absolute text-center font-bold text-2xl text-violet-950 cursor-pointer uppercase   top-7 px-14 '> HOD : <FcCheckmark></FcCheckmark></span>
+                      <span> </span>
                       </div>
                     )}
                     {!letter.hodApproved && (
                       <div>
-                      HOD : 
-                      <span> <ImCross></ImCross></span>
+                    
+                      <span className='absolute text-center font-bold text-2xl text-violet-950 cursor-pointer uppercase   top-7 px-14 '> HOD : <ImCross></ImCross></span>
+                      {/* <span> </span> */}
                       </div>
                     )}
+                
+                {/* <span className=''>{letter.date.slice(0,10)} </span> */}
+                
+                {/* <div className='absolute top-2 right-1 px-2 cursor-pointer '><AiTwotoneDelete className='text-red-500 hover:text-red-600 text-lg'/></div> */}
+            </div>
+                  // <div className='min-h-[50px] min-w-[50px] m-10 border cursor-pointer border-green-500' onClick={()=>{
+                  //   router.push(`/profile/student/leave/${user._id}?index=${index}`)
+                  // }}>
+                  //   {letter.date.slice(0,10)}
+                  //   {letter.mentorApproved && (
+                  //     <div>
+                  //     mentor : 
+                  //     <span> <FcCheckmark></FcCheckmark></span>
+                  //     </div>
+                  //   )}
+                  //   {!letter.mentorApproved && (
+                  //     <div>
+                  //     mentor : 
+                  //     <span> <ImCross></ImCross></span>
+                  //     </div>
+                  //   )}
+                  //   {letter.hodApproved && (
+                  //     <div>
+                  //     HOD : 
+                  //     <span> <FcCheckmark></FcCheckmark></span>
+                  //     </div>
+                  //   )}
+                  //   {!letter.hodApproved && (
+                  //     <div>
+                  //     HOD : 
+                  //     <span> <ImCross></ImCross></span>
+                  //     </div>
+                  //   )}
+                  // </div>
+                )}
                   </div>
                 )}
-              <p className='text-lg'>Accepted</p> 
+              {/* <p className='text-lg'>Accepted</p>  */}
+
               {letter.hodApproved && (
-                  <div className='min-h-[50px] min-w-[50px] m-10 border cursor-pointer border-green-500' onClick={()=>{
-                    router.push(`/profile/student/leave/${user._id}?index=${index}`)
-                  }}>
-                    {letter.date.slice(0,10)}
-                    {letter.mentorApproved && (
+                <>
+                <p className='text-lg'>Accepted</p>
+                <div className=' border mx-5 h-[100mm] w-[70mm] relative border-green-700 shadow-xl shadow-green-600'
+                onClick={()=>{router.push(`/profile/student/leave/${user._id}?index=${index}`)}}
+                >
+                  
+                <img className='' src='https://marketplace.canva.com/EAFhHrjw0Qk/1/0/1131w/canva-black-and-white-simple-classic-professional-cover-letter-G55SxrJRkKo.jpg' />
+                <div className="absolute top-0 left-0 w-full h-full bg-blue-100 opacity-50"></div>
+                <span className='absolute text-center font-bold text-2xl text-violet-950 cursor-pointer uppercase   top-0 px-14'>{letter.date.slice(0,10)} </span>
+                {letter.mentorApproved && (
                       <div>
-                      mentor : 
-                      <span> <FcCheckmark></FcCheckmark></span>
+                     
+                      <span className='absolute text-center font-bold text-2xl text-violet-950 cursor-pointer uppercase   top-5 px-14 py-32'> mentor : <FcCheckmark></FcCheckmark></span>
+                      <span> </span>
                       </div>
                     )}
                     {!letter.mentorApproved && (
                       <div>
-                      mentor : 
-                      <span> <ImCross></ImCross></span>
+                    
+                      <span className='absolute text-center font-bold text-2xl text-violet-950 cursor-pointer uppercase   top-5 px-14 py-32'> mentor : <ImCross></ImCross></span>
+                      {/* <span> </span> */}
                       </div>
                     )}
-                    {letter.hodApproved && (
+                {letter.hodApproved && (
                       <div>
-                      HOD : 
-                      <span> <FcCheckmark></FcCheckmark></span>
+                     
+                      <span className='absolute text-center font-bold text-2xl text-violet-950 cursor-pointer uppercase   top-7 px-14 '> HOD : <FcCheckmark></FcCheckmark></span>
+                      <span> </span>
                       </div>
                     )}
                     {!letter.hodApproved && (
                       <div>
-                      HOD : 
-                      <span> <ImCross></ImCross></span>
+                    
+                      <span className='absolute text-center font-bold text-2xl text-violet-950 cursor-pointer uppercase   top-7 px-14 '> HOD : <ImCross></ImCross></span>
+                      {/* <span> </span> */}
                       </div>
                     )}
-                  </div>
+                
+                {/* <span className=''>{letter.date.slice(0,10)} </span> */}
+                
+                {/* <div className='absolute top-2 right-1 px-2 cursor-pointer '><AiTwotoneDelete className='text-red-500 hover:text-red-600 text-lg'/></div> */}
+            </div>
+                </>
+                  // <div className='min-h-[50px] min-w-[50px] m-10 border cursor-pointer border-green-500' onClick={()=>{
+                  //   router.push(`/profile/student/leave/${user._id}?index=${index}`)
+                  // }}>
+                  //   {letter.date.slice(0,10)}
+                  //   {letter.mentorApproved && (
+                  //     <div>
+                  //     mentor : 
+                  //     <span> <FcCheckmark></FcCheckmark></span>
+                  //     </div>
+                  //   )}
+                  //   {!letter.mentorApproved && (
+                  //     <div>
+                  //     mentor : 
+                  //     <span> <ImCross></ImCross></span>
+                  //     </div>
+                  //   )}
+                  //   {letter.hodApproved && (
+                  //     <div>
+                  //     HOD : 
+                  //     <span> <FcCheckmark></FcCheckmark></span>
+                  //     </div>
+                  //   )}
+                  //   {!letter.hodApproved && (
+                  //     <div>
+                  //     HOD : 
+                  //     <span> <ImCross></ImCross></span>
+                  //     </div>
+                  //   )}
+                  // </div>
                 )}
             </div>
           {/* ))} */}

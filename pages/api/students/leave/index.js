@@ -91,7 +91,7 @@ export default async function(req, res){
                 await letter.save();
                 console.log("letter",letter)
             }
-            res.send({done:true})
+            res.status(200).send({done:true})
             break
             
     }

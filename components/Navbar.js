@@ -37,24 +37,33 @@ const Navbar = () => {
                >
                  Choose
                </Link>
-               <Link
+              
+               {user.position == "student" && (
+                  <Link
+                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                  href="/profile/student/attendance"
+                >
+                  Attendance
+                </Link>
+               )} 
+               {user.position == "student" && (
+                 <Link
                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
-                 href="/attendance"
+                 href="/profile/student/leave"
                >
-                 Attendance
+                 Leave
                </Link>
+               )} 
+               
+               
                <Link
                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
                  href="/api/auth/logout"
                >
                  Logout
                </Link>
-               <Link
-                 className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
-                 href="#"
-               >
-                 Pricing
-               </Link>
+               
+               
              </div>
            </div>
          </div>
