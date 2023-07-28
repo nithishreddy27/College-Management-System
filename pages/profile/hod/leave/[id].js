@@ -2,14 +2,19 @@ import React from 'react'
 import { getLoginSession } from '../../../../lib/auth';
 import { findUser } from '../../../../lib/user';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 export default function leaveLetterDisplay({leaveLetters,userDetails,index,id}) {
     // console.log("leave")
     const leaveLetter = JSON.parse(leaveLetters);
     const user = JSON.parse(userDetails);
     console.log('leave letter',leaveLetter);
+    const router = useRouter()
     async function approve(){
+      console.log("inside approve")
         await axios.put("../../../api/students/leave/hodDisplay",{status:"approve",userId:id,index:index})
+        router.push('/profile/hod/leave')
+
     }
     async function cancel(){
 

@@ -10,7 +10,7 @@ import Circular from "../../../model/Circular";
 // import StudentDetails from "../../../../model/StudentDetails";
 // import facultyDetails from "../../../../model/facultyDetails";
 
-export default async function(req, res){
+export default async function handler(req, res){
     const b = req.body
     await dbConnect();
 
@@ -36,7 +36,8 @@ export default async function(req, res){
             console.log("body in api",object)
 
             await Circular.create(object);
-            res.status(200).send({done:true})
+            res.redirect("/profile/hod/circular")
+            // res.status(200).send({done:true})
 
            break;
         case "PUT":

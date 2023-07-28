@@ -76,10 +76,10 @@ export default function index({userDetails , facultySubjects}) {
       {subjects && (
         <div>
           {subjects.map((subject)=>(
-            <div className='mt-16 bg-red-300 p-3' key={subject}>
+            <div className='bg-violet-400 text-white text-center py-5 tracking-widest mb-10 ' key={subject}>
               <h1 onClick={()=>{
                   changeClass(subject.class)
-              }} className='cursor-pointer'>
+              }} className='cursor-pointer border border-white p-2 w-20 rounded-lg bg-white text-violet-400 font-semibold mx-10 '>
                       {subject.class}
                       
               </h1>

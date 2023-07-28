@@ -47,8 +47,37 @@ export default function Index({ userDetails }) {
             </button>
             {students && (
               <>
+              <table className="w-full table-fixed overflow-scroll border border-collapse border-slate-400">
+                <thead className="h-10 border-slate-300 hover:bg-neutral-200">
+                  <td className="text-bold px-6 py-1 text-[14px] border border-slate-300  hover:bg-neutral-300 whitespace-nowrap">
+                    Faculty Email
+                  </td>
+                  <td className="text-bold px-6 py-1 text-[14px] border border-slate-300  hover:bg-neutral-300 whitespace-nowrap">
+                    Faculty Roll No.
+                  </td>
+                  <td className="text-bold px-6 py-1 text-[14px] border border-slate-300  hover:bg-neutral-300 whitespace-nowrap">
+                    Faculty Name
+                  </td>
+                </thead>
+              </table>
                 {students.map((student) => (
-                  <h1 key={student._id}>{student.email}</h1>
+                  // <h1 key={student._id}>{student.email}</h1>
+                  <table
+                      key={student._id}
+                      className="w-full table-fixed overflow-scroll border border-collapse border-slate-400"
+                    >
+                      <tr className="h-10 border-slate-300 hover:bg-neutral-200">
+                        <td className="px-6 py-1 text-xs border border-slate-300  hover:bg-neutral-300 whitespace-nowrap">
+                          {student.email}
+                        </td>
+                        <td className="px-6 py-1 text-xs border border-slate-300  hover:bg-neutral-300 whitespace-nowrap">
+                          {student.rollNumber.value}
+                        </td>
+                        <td className="px-6 py-1 text-xs border border-slate-300  hover:bg-neutral-300 whitespace-nowrap">
+                          {student.profile.firstName}
+                        </td>
+                      </tr>
+                    </table>
                 ))}
               </>
             )}

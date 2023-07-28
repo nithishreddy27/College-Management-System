@@ -27,17 +27,25 @@ const Navbar = () => {
              <div className="flex gap-2 mx-10 text-lg align-text-bottom">
                <Link
                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
-                 href="#"
+                 href={`/profile/${user.position}`}
                >
                  Home
                </Link>
-               <Link
+               {/* <Link
                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
                  href="#"
                >
                  Choose
-               </Link>
+               </Link> */}
               
+               {user.position == "student" && (
+                  <Link
+                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                  href="/profile/student/circular"
+                >
+                  Circular
+                </Link>
+               )} 
                {user.position == "student" && (
                   <Link
                   className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
@@ -46,10 +54,58 @@ const Navbar = () => {
                   Attendance
                 </Link>
                )} 
+               {user.position == "hod" && (
+                  <Link
+                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                  href="/profile/hod/students"
+                >
+                  Students
+                </Link>
+               )} 
                {user.position == "student" && (
                  <Link
                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
                  href="/profile/student/leave"
+               >
+                 Leave
+               </Link>
+               )} 
+               {user.position == "hod" && (
+                 <Link
+                 className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                 href="/profile/hod/leave"
+               >
+                 Leave
+               </Link>
+               )} 
+               {user.position == "faculty" && (
+                  <Link
+                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                  href="/profile/student/circular"
+                >
+                  Circular
+                </Link>
+               )} 
+               {user.position == "hod" && (
+                  <Link
+                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                  href="/profile/hod/circular"
+                >
+                  Circular
+                </Link>
+               )} 
+               {user.position == "faculty" && (
+                  <Link
+                  className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                  href="/attendance"
+                >
+                  Attendance
+                </Link>
+               )} 
+               {user.position == "faculty" && (
+                 <Link
+                 className="px-6 py-3 font-semibold hover:text-pink-700 hover:text-xl ease-in-out duration-300"
+                 href="/profile/faculty/leave"
                >
                  Leave
                </Link>

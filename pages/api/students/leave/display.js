@@ -23,7 +23,7 @@ export default async function(req, res){
             // console.log("in get attendancec",attendance)
             // // attendance.StudentDetails.studentSubjects
             const l = await LeaveLetter.findOne({"user":userId}) 
-            // console.log("l",l);
+            console.log("letters in api",l);
             const letter = l.leaveLetters[index]
             
             res.status(200).send({data:letter})  

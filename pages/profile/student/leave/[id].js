@@ -2,14 +2,21 @@ import React from 'react'
 import { getLoginSession } from '../../../../lib/auth';
 import { findUser } from '../../../../lib/user';
 import axios from 'axios';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 export default function leaveLetterDisplay({leaveLetters,userDetails,index,id}) {
     // console.log("leave")
     const leaveLetter = JSON.parse(leaveLetters);
     const user = JSON.parse(userDetails);
+    const router = useRouter()
     console.log('leave letter',leaveLetter);
     async function approve(){
-        await axios.put("../../../api/students/leave",{status:"approve",userId:id,index:index})
+      await axios.put("../../../api/students/leave",{status:"approve",userId:id,index:index})
+      toast.success("Letter Approved ", {
+        toastId: "Letter Approved",
+      });
+      router.push("/profile/faculty/leave")
     }
     async function cancel(){
 
