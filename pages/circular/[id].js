@@ -58,7 +58,7 @@ export default function circularDisplay({c,id,userDetails}) {
               <div className="absolute left-4 text-start pt-[35mm] ">
                 <p className="font-medium"> Copy to </p>
                 {circular.copyTo?.map((item)=>(
-                    <p> {item}</p>
+                    <p key={item}> {item}</p>
 
                 ))}
                 {/* <p>Vice-Principal</p>

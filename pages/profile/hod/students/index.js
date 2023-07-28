@@ -107,7 +107,7 @@ export default function Index({ userDetails }) {
             {faculty && (
               <>
                 {faculty.map((fu) => (
-                  <>
+                  <div key={fu._id}>
                     <table
                       key={fu._id}
                       className="w-full table-fixed overflow-scroll border border-collapse border-slate-400"
@@ -127,7 +127,7 @@ export default function Index({ userDetails }) {
                     {/* <h1 key={fu._id}>
                     {fu.email} {fu.rollNumber.value} {fu.profile.firstName}
                   </h1> */}
-                  </>
+                  </div>
                 ))}
               </>
             )}

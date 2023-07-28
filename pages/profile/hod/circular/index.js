@@ -28,7 +28,7 @@ export default function Index({circular}) {
            
        </div>
         {circulars.map((circular)=>(
-           <div className=' border mx-5 h-[100mm] w-[70mm] relative' onClick={()=>{
+           <div className=' border mx-5 h-[100mm] w-[70mm] relative' key={circular.fileNumber} onClick={()=>{
             router.push(`/circular/${circular.fileNumber}`)
           }}>
             {console.log('cir',circular)}

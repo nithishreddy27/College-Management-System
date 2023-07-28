@@ -135,7 +135,7 @@ export default function Dashboard({ userDetails }) {
             {students && (
               <>
                 {students.map((item) => (
-                  <>
+                  <div key={item["S.No"]}>
                     <h1>{console.log(item)}</h1>
                     <tr className="border font-light w-[100%] mx-2 hover:bg-gray-100">
                       <th className="font-normal py-2">{item["S.No"]}</th>
@@ -145,7 +145,7 @@ export default function Dashboard({ userDetails }) {
                       <th className="font-normal py-2">{item["College Mail ID"]}</th>
                       <th className="font-normal py-2">{item["Branch"]}</th>
                     </tr>
-                  </>
+                  </div>
                 ))}
               </>
             )}

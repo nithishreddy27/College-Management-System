@@ -131,7 +131,7 @@ export default function Dashboard({userDetails}) {
             <>
            
              {faculty.map((item)=>(
-              <> 
+              <div key={item["S.No"]}> 
                   <h1>{console.log(item)}</h1>
                   <tr className="border font-light w-[100%] mx-2">
                     <th className="font-normal ">{item["S.No"]}</th>
@@ -147,7 +147,7 @@ export default function Dashboard({userDetails}) {
                     </th>
                   </tr>
 
-              </>
+              </div>
               ))} 
             </>
            )}

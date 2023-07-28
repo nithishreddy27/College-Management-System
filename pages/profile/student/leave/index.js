@@ -27,7 +27,7 @@ export default function Index({userDetails,leaveLetters}) {
                 <span className='absolute text-center font-bold text-2xl text-violet-950 cursor-pointer uppercase  font-serif top-5 px-14 py-32'>Leave letter </span>
                 
             </div>
-      {letters?.leaveLetters?.map((letter,index)=>(
+      {letters?.leaveLetters?. ((letter,index)=>(
         <div>
         <div key={letter._id}>
           {/* {letter.leaveLetters.map((letter,index)=>( */}
