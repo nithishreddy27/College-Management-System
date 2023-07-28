@@ -1,6 +1,7 @@
 // import Register from "../../model/Register";
 // UserSche
 
+// import dbConnect from "../../../../lib/dbConnect";
 import dbConnect from "../../../../lib/dbConnect";
 import Register from "../../../../model/Register";
 import StudentDetails from "../../../../model/StudentDetails";

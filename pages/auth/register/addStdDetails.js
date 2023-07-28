@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useUser } from "../../lib/hooks";
+import { useUser } from "../../../lib/hooks";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
 import moment from "moment";

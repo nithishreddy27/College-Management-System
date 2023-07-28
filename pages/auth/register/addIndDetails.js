@@ -1,7 +1,7 @@
 import React , {useState} from 'react'
 import Link from "next/link"
 import Router, { useRouter  } from 'next/router';
-import { useUser } from '../../lib/hooks';
+import { useUser } from '../../../lib/hooks';
 
 
 export default function AddDetails() {
