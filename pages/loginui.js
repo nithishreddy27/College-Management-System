@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-const loginui = () => {
+const Loginui = () => {
     const [sign,setsign]=useState("signin")
   return (
     <div>
@@ -137,4 +137,4 @@ const loginui = () => {
   );
 };
 
-export default loginui;
+export default Loginui;

@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
-export default function index({userDetails , facultySubjects}) {
+export default function Index({userDetails , facultySubjects}) {
 
   const user = JSON.parse(userDetails)
   const subjects = facultySubjects.facultySubjects;

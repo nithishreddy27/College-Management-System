@@ -8,7 +8,7 @@ import {FcCheckmark} from "react-icons/fc"
 import {ImCross} from "react-icons/im"
 import { AiTwotoneDelete } from 'react-icons/ai';
 
-export default function index({userDetails,leaveLetters}) {
+export default function Index({userDetails,leaveLetters}) {
   // const {letterBody, setLetterBody} = useResumeContext();
   // console.log(modules)
   const user = JSON.parse(userDetails);

@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import Navbar from '../../../../components/Navbar';
 
-export default function index({circular}) {
+export default function Index({circular}) {
     const circulars = JSON.parse(circular)
     // console.log("circulars",circulars)
     const router = useRouter()

@@ -7,7 +7,7 @@ import { BsFillTelephoneFill  } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { BsFillHouseDoorFill } from "react-icons/bs";
 
-export default function index({userDetails}) {
+export default function Index({userDetails}) {
     const user = JSON.parse(userDetails)
 
     

@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 
-export default function leaveLetterDisplay({leaveLetters,userDetails,index,id}) {
+export default function LeaveLetterDisplay({leaveLetters,userDetails,index,id}) {
     // console.log("leave")
     const leaveLetter = JSON.parse(leaveLetters);
     const user = JSON.parse(userDetails);

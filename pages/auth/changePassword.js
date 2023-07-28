@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { getLoginSession } from "../../lib/auth";
 import { findUser } from "../../lib/user";
 
-export default function changePassword({ userDetails }) {
+export default function ChangePassword({ userDetails }) {
   const user = JSON.parse(userDetails);
   const router = useRouter();
   const [currentPassword, setcurrentPassword] = useState("test@123");

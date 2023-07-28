@@ -7,7 +7,7 @@ import { findUser } from '../../../../lib/user';
 
 
 
-const circular = ({userDetails}) => {
+const Circular = ({userDetails}) => {
 
   const user = JSON.parse(userDetails)
   const {fileNumber ,setFileNumber,circularBody,setCircularBody,circularDisplay,setCircularDisplay} = useResumeContext()
@@ -286,7 +286,7 @@ const today = new Date();
   )
 }
 
-export default circular
+export default Circular
 
 export const getServerSideProps = async ({ req, res }) => {
   const session = await getLoginSession(req);

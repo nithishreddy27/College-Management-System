@@ -7,7 +7,7 @@ import {FcCheckmark} from "react-icons/fc"
 import {ImCross} from "react-icons/im"
 import Navbar from '../../../../components/Navbar';
 
-export default function index({leaveLetters}) {
+export default function Index({leaveLetters}) {
   const leaveLetter  = JSON.parse(leaveLetters)
   console.log("leave",leaveLetter)
   const router = useRouter()

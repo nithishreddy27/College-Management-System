@@ -3,7 +3,7 @@ import { useUser } from '../lib/hooks'
 import { decryptString, encryptString } from '../components/encryption';
 import Link from 'next/link';
 
-export default function openApi() {
+export default function OpenApi() {
     const user = useUser()
     // const originalText = 'This is a secret message!';
 

@@ -5,7 +5,7 @@ import crypto from "crypto";
 import axios from "axios";
 import Navbar from "../../../../components/Navbar";
 
-export default function index({ userDetails, attendanceDetails }) {
+export default function Index({ userDetails, attendanceDetails }) {
   const user = JSON.parse(userDetails);
   // console.log("user",user)
   const attendance = JSON.parse(attendanceDetails).attendance;
