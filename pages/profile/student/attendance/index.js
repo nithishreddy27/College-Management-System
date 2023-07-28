@@ -35,7 +35,7 @@ export default function Index({ userDetails, attendanceDetails }) {
             </thead>
             <tbody className="border">
               {attendance.studentSubjects.map((subject) => (
-                <tr className="bg-white dark:bg-gray-800">
+                <tr className="bg-white dark:bg-gray-800" key={subject.name}>
                   <th
                     scope="row"
                     className="px-4 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -90,7 +90,7 @@ export default function Index({ userDetails, attendanceDetails }) {
           </table>
 
           {attendance.studentSubjects.map((subject) => (
-            <div>
+            <div key={subject.name}>
               {/* {console.log("sub",subject)} */}
               <p className="text-xl font-bold ">{subject.name}</p>
               {subject.subjectAttendance && (
@@ -106,7 +106,7 @@ export default function Index({ userDetails, attendanceDetails }) {
                 </>
               )}
               {subject.totalSubjectClasses && (
-                <>
+                <div>
                   <div>
                     TOtal number of classes = {subject.totalSubjectClasses}
                   </div>
@@ -119,7 +119,7 @@ export default function Index({ userDetails, attendanceDetails }) {
                       100}{" "}
                     %
                   </p>
-                </>
+                </div>
               )}
 
               {/* {subject.subjectAttendance?.map((s)=>{

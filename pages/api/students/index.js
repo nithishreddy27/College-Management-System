@@ -1,7 +1,7 @@
 import dbConnect from "../../../lib/dbConnect"
 import Register from "../../../model/Register"
 
-export default async function(req, res){
+export default async function handler(req, res){
 
     await dbConnect()
     switch (req.method) {

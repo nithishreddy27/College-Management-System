@@ -23,7 +23,7 @@ export default function Index({leaveLetters}) {
         <p className='text-lg '>Pending</p>
         <div className='flex'>
         {student.leaveLetters.map((letter,index)=>(
-          <div >
+          <div key={letter._id}>
 
               {!letter.hodApproved && (
                   <div className='min-h-[50px] min-w-[50px] m-10 '>
@@ -109,7 +109,7 @@ export default function Index({leaveLetters}) {
 
 <div className='flex'>
         {student.leaveLetters.map((letter,index)=>(
-          <div >
+          <div key={letter._id}>
              
             {letter.hodApproved && (
               <>

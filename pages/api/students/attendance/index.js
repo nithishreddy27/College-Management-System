@@ -5,7 +5,7 @@ import Register from "../../../../model/Register";
 import StudentDetails from "../../../../model/StudentDetails";
 import facultyDetails from "../../../../model/facultyDetails";
 
-export default async function(req, res){
+export default async function handler(req, res){
     console.log('inside api')
     await dbConnect()
     const today = new Date()

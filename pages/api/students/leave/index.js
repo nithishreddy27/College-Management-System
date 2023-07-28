@@ -8,7 +8,7 @@ import LeaveLetter from "../../../../model/LeaveLetter";
 // import StudentDetails from "../../../../model/StudentDetails";
 // import facultyDetails from "../../../../model/facultyDetails";
 
-export default async function(req, res){
+export default async function handler(req, res){
     const b = req.body
     await dbConnect();
     const today = new Date()

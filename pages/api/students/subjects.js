@@ -3,7 +3,7 @@ import dbConnect from "../../../lib/dbConnect";
 import Register from "../../../model/Register";
 import facultyDetails from "../../../model/facultyDetails";
 
-export default async function(req, res){
+export default async function handler(req, res){
     try{
 
     await dbConnect()
